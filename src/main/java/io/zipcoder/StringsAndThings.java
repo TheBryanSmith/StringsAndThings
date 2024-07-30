@@ -1,6 +1,9 @@
 package io.zipcoder;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,7 +18,15 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] yZ = input.split(" ");
+        int counter = 0;
+        for (String s : yZ){
+            char lastIndex = s.charAt(s.length()-1);
+            if(lastIndex == 'y'|| lastIndex == 'z'){
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -28,7 +39,8 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String fini = base.replaceAll(remove, "");
+        return fini ;
     }
 
     /**
@@ -40,7 +52,14 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        Pattern p = Pattern.compile("is");
+        Matcher m = p.matcher(input);
+        long isCounter = m.results().count();
+
+        Pattern p2 = Pattern.compile("not")
+        Matcher m1 = p.matcher(input);
+        long notCounter = m1.results().count();
+    return isCounter == notCounter;
     }
 
     /**
@@ -51,7 +70,19 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+       boolean checker = false;
+       for(int i = 0 ; i < input.length(); i++){
+           if(i < input.length() - 1 && input.charAt(i) == 'g' && input.charAt(i+1) == 'g'){
+                checker = true;
+           } else if ( i > 0 && input.charAt(i) == 'g' && input.charAt(i -1) == 'g'){
+               checker = true;
+
+           } else if (input.charAt(i) == 'g'){
+               checker = false
+
+           }
+       }
+       return checker;
     }
 
 
@@ -63,6 +94,15 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int trplr = 0;
+        for(int i = 0 ; i < input.length(); i++){
+        if(i < input.length()-2 && input.charAt(i) == input.charAt(i+1) && input.charAt(i+1) == input.charAt(i+2)){
+            trplr++;
+        }
+
+        }
+
+
+            return trplr;
     }
 }
